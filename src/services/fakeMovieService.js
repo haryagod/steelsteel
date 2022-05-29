@@ -27,7 +27,7 @@ const movies = [
 ];
 
 export async function  getMovies() {
-  const {data:movies} = await httpService.get('http://localhost:5000/listings');
+  const {data:movies} = await httpService.get('https://steelsteelapi.herokuapp.com/listings');
   return movies;
 }
 
@@ -48,14 +48,14 @@ export async function saveMovie(movie) {
   if(!!movieInDb._id)
   {
    console.log(movieInDb) 
-  await httpService.put('http://localhost:5000/listing',movieInDb)
+  await httpService.put('https://steelsteelapi.herokuapp.com/listing',movieInDb)
   }
   else
- await  httpService.post('http://localhost:5000/listing',movieInDb)
+ await  httpService.post('https://steelsteelapi.herokuapp.com/listing',movieInDb)
 
   return movieInDb;
 }
 
 export async function  deleteMovie(id) {
-  await httpService.delete('http://localhost:5000/listings/delete/'+id)
+  await httpService.delete('https://steelsteelapi.herokuapp.com/listings/delete/'+id)
 }
