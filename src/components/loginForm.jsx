@@ -1,10 +1,11 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import httpService from '../services/httpService'
+import httpService from "../services/httpService";
+
 class LoginForm extends Form {
   state = {
-    data: { username: "", password: "" },
+    data: { "username": "", "password": "" },
     errors: {}
   };
 
@@ -17,14 +18,14 @@ class LoginForm extends Form {
       .label("Password")
   };
 
-  doSubmit = async () => {
+   doSubmit = async () => {
     // Call the server
       console.log(this.state.data)
       const {data} = await httpService.post("https://steelsteelapi.herokuapp.com/login",{...this.state.data})
-      if(!!data &&  !!data[0] && data[0].username)
+      if(!!data && data[0].username)
       {
-      localStorage.setItem('user',data);
-      this.props.history.push("/movies");
+      localStorage.setItem('user',JSON.stringify(data[0]));
+      this.props.history.push("/");
       }
       else
       {

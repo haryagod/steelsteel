@@ -29,7 +29,6 @@ class MovieForm extends Form {
     numberInStock: Joi.number()
       .required()
       .min(0)
-      .max(100)
       .label("Number in Stock"),
     wholeSaleRate: Joi.number()
       .required()

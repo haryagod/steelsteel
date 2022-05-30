@@ -34,12 +34,12 @@ class MoviesTable extends Component {
     }
   ];
 
-  render() {
+  render() {    
     const { movies, onSort, sortColumn, isRetail,isWholeSale } = this.props;
     
     if(!!isRetail)
     {
-      this.columns = this.columns.filter(e=>e.path != 'delete')
+      this.columns = this.columns.filter(e=> e.key !='delete')
       this.columns = this.columns.filter(e=>e.path != 'wholeSaleRate')
       this.columns = this.columns.filter(e=>e.path != 'dpRate')
       if(!!this.columns)
@@ -48,7 +48,7 @@ class MoviesTable extends Component {
 
     if(!!isWholeSale)
     {
-      this.columns = this.columns.filter(e=>e.path != 'delete')
+      this.columns = this.columns.filter(e=> e.key !='delete')
       this.columns = this.columns.filter(e=>e.path != 'retailRate')
       this.columns = this.columns.filter(e=>e.path != 'dpRate')
       if(!!this.columns)

@@ -100,13 +100,6 @@ class Rentals extends Component {
           />
         </div>
         <div className="col">
-          <Link
-            to="/movies/new"
-            className="btn btn-primary"
-            style={{ marginBottom: 20 }}
-          >
-            New Product
-          </Link>
           {count >0 && <p>Showing {totalCount} products in the database.</p>}
            {count === 0 && <p>There are no Products in the database.</p>}
            {count >0 &&<SearchBox value={searchQuery} onChange={this.handleSearch} />}

@@ -84,6 +84,12 @@ class Movies extends Component {
   };
 
   render() {
+    let user =null;
+    const userstr = localStorage.getItem('user');
+    if(!!userstr)
+    {
+      user = JSON.parse(userstr)
+    }
     const { length: count } = this.state.movies;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
 
@@ -100,13 +106,13 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <Link
+          {<Link
             to="/movies/new"
             className="btn btn-primary"
             style={{ marginBottom: 20 }}
           >
             New Product
-          </Link>
+          </Link>}
           {count >0 && <p>Showing {totalCount} products in the database.</p>}
            {count === 0 && <p>There are no Products in the database.</p>}
            {count >0 &&<SearchBox value={searchQuery} onChange={this.handleSearch} />}
