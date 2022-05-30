@@ -17,9 +17,18 @@ class LoginForm extends Form {
       .label("Password")
   };
 
-  doSubmit = () => {
+  doSubmit = async () => {
     // Call the server
-    console.log("Submitted");
+    const {data} = await httpService.post("https://steelsteelapi.herokuapp.com/login",this.state.data)
+    if(!!data && data.username)
+    {
+    localStorage.setItem('user',data);
+    this.props.history.push("/movies");
+    }
+    else
+    {
+      alert("invalid user")
+    }
   };
 
   render() {
