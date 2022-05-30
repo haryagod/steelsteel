@@ -19,16 +19,18 @@ class LoginForm extends Form {
 
   doSubmit = async () => {
     // Call the server
-    const {data} = await httpService.post("https://steelsteelapi.herokuapp.com/login",this.state.data)
-    if(!!data && data.username)
-    {
-    localStorage.setItem('user',data);
-    this.props.history.push("/movies");
-    }
-    else
-    {
-      alert("invalid user")
-    }
+      console.log(this.state.data)
+      const {data} = await httpService.post("https://steelsteelapi.herokuapp.com/login",{...this.state.data})
+      if(!!data &&  !!data[0] && data[0].username)
+      {
+      localStorage.setItem('user',data);
+      this.props.history.push("/movies");
+      }
+      else
+      {
+        alert("invalid user")
+      }
+   
   };
 
   render() {
